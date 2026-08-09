@@ -1,0 +1,78 @@
+--- a/smali_classes66/com/parrot/controller/video/decoder/MediaCodecVideoDecoder.smali
++++ b/smali_classes66/com/parrot/controller/video/decoder/MediaCodecVideoDecoder.smali
+@@ -241,9 +241,9 @@
+     .line 79
+     const-string v0, "video/avc"
+
+-    const/16 v2, 0x280
++    const/16 v2, 0x2d0
+
+-    const/16 v3, 0x170
++    const/16 v3, 0x220
+
+     invoke-static {v0, v2, v3}, Landroid/media/MediaFormat;->createVideoFormat(Ljava/lang/String;II)Landroid/media/MediaFormat;
+
+@@ -265,6 +265,15 @@
+
+     invoke-virtual {v0, v2, p2}, Landroid/media/MediaFormat;->setByteBuffer(Ljava/lang/String;Ljava/nio/ByteBuffer;)V
+
++    .line 81
++    iget-object v0, p0, Lcom/parrot/controller/video/decoder/MediaCodecVideoDecoder;->mMediaFormat:Landroid/media/MediaFormat;
++
++    const-string v2, "color-format"
++
++    const/16 v3, 0x13
++
++    invoke-virtual {v0, v2, v3}, Landroid/media/MediaFormat;->setInteger(Ljava/lang/String;I)V
++
+     .line 82
+     iget-boolean v0, p0, Lcom/parrot/controller/video/decoder/MediaCodecVideoDecoder;->mUseSurface:Z
+
+--- a/smali_classes66/com/parrot/controller/video/decoder/ARStream2MediaCodecVideoDecoder$1.smali
++++ b/smali_classes66/com/parrot/controller/video/decoder/ARStream2MediaCodecVideoDecoder$1.smali
+@@ -350,6 +350,20 @@
+
+     .line 163
+     .local v21, "userMetadata":Lcom/parrot/controller/stream/UserMetadata;
++    if-nez v21, :cond_thermal_metadata_done
++
++    sget-object v4, Lcom/parrot/controller/video/decoder/ARStream2MediaCodecVideoDecoder;->sUserMetadataDeserializer:Lcom/parrot/controller/stream/UserMetadataDeserializer;
++
++    move-wide/from16 v0, p2
++
++    move/from16 v2, p4
++
++    invoke-interface {v4, v0, v1, v2}, Lcom/parrot/controller/stream/UserMetadataDeserializer;->extract(JI)Lcom/parrot/controller/stream/UserMetadata;
++
++    move-result-object v21
++
++    :cond_thermal_metadata_done
++
+     if-eqz v21, :cond_4
+
+     .line 164
+@@ -402,8 +416,6 @@
+
+     iget-object v4, v4, Lcom/parrot/controller/video/decoder/ARStream2MediaCodecVideoDecoder;->mOutputBuffers:[Ljava/nio/ByteBuffer;
+
+-    if-eqz v4, :cond_5
+-
+     .line 185
+     move-object/from16 v0, p0
+
+@@ -437,9 +449,13 @@
+
+     iget-object v4, v0, Lcom/parrot/controller/video/decoder/ARStream2MediaCodecVideoDecoder$1;->this$0:Lcom/parrot/controller/video/decoder/ARStream2MediaCodecVideoDecoder;
+
+-    iget-object v4, v4, Lcom/parrot/controller/video/decoder/ARStream2MediaCodecVideoDecoder;->mOutputBuffers:[Ljava/nio/ByteBuffer;
++    iget-object v4, v4, Lcom/parrot/controller/video/decoder/ARStream2MediaCodecVideoDecoder;->mMediaCodec:Landroid/media/MediaCodec;
++
++    move/from16 v0, v20
++
++    invoke-virtual {v4, v0}, Landroid/media/MediaCodec;->getOutputBuffer(I)Ljava/nio/ByteBuffer;
+
+-    aget-object v9, v4, v20
++    move-result-object v9
+
+     .line 188
+     .local v9, "buffer":Ljava/nio/ByteBuffer;

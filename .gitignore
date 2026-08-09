@@ -1,0 +1,24 @@
+# Inputs and generated artifacts
+/input/*
+!/input/.gitkeep
+/output/*
+!/output/.gitkeep
+/work/
+/reports/
+
+# Proprietary / redistributed binaries: do not commit these
+*.apk
+*.xapk
+*.obb
+*.apks
+*.dex
+*.so
+*.jar
+*.keystore
+*.jks
+
+# Local OS/editor files
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
