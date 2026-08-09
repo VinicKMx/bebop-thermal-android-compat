@@ -50,11 +50,13 @@ OBB   1d90477e6a2bc88220f39c2ceabc0af8f66d860cbf4ec3abfb824a636703d2a2
 
 ## Build
 
-Install the Android tooling used by the scripts:
+The build scripts are written for Linux. WSL works.
+
+Install the tools used by the scripts:
 
 ```bash
 sudo apt-get update
-sudo apt-get install -y apktool apksigner zipalign default-jdk unzip zip patch
+sudo apt-get install -y apktool apksigner zipalign default-jdk unzip zip patch adb
 ```
 
 Put the original XAPK anywhere outside git, for example:
@@ -85,7 +87,12 @@ output/main.30003201.com.parrot.freeflightthermal.obb
 
 The generated APK is signed with a local test key. It is not Parrot-signed.
 
-## Install With ADB
+## Install
+
+### Option 1: ADB
+
+Enable USB debugging on the Android device, connect it to the computer, then
+run:
 
 ```bash
 ./scripts/install-adb.sh
@@ -93,6 +100,28 @@ The generated APK is signed with a local test key. It is not Parrot-signed.
 
 If another build of FreeFlight Thermal is already installed with a different
 signature, uninstall it first.
+
+### Option 2: XAPK installer
+
+The build also creates:
+
+```text
+output/freeflightthermal-3.0.4-android15-thermal-compat.xapk
+```
+
+Install that file with any XAPK-capable Android installer. This is useful when
+you want the APK and OBB expansion file installed together.
+
+If installation fails because another FreeFlight Thermal build is already
+installed, uninstall the existing app and try again.
+
+## Use
+
+Connect the Android device to the Skycontroller 2 over USB, power on the drone
+and controller, then open FreeFlight Thermal.
+
+The patch only addresses the Android live thermal video path. It does not pair
+the drone, calibrate sensors, update firmware, or change flight behavior.
 
 ## Firmware
 
