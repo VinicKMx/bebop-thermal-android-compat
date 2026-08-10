@@ -134,6 +134,14 @@ No reset, flash, or bootloader work is involved.
 
 See [docs/technical-notes.md](docs/technical-notes.md).
 
+## Buy Me a Coffee
+
+If this project helped you, you can send a few sats over Lightning:
+
+`maquinalab@walletofsatoshi.com`
+
+<img src="assets/lightning-donation-qr.svg" alt="Lightning donation QR code" width="180">
+
 ## License
 
 The original scripts and documentation in this repo are MIT licensed. That does
