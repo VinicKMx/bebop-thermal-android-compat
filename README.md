@@ -144,8 +144,11 @@ If this project helped you, you can send a few sats over Lightning:
 
 ## License
 
-The original scripts and documentation in this repo are MIT licensed. That does
-not grant rights to third-party proprietary apps, firmware, binaries, assets, or
-trademarks.
+Dual-licensed under [MIT](LICENSE-MIT) or [Apache-2.0](LICENSE-APACHE), at your
+option.
+
+That covers the original scripts, documentation, and patch instructions in this
+repository. It does not grant rights to third-party proprietary apps, firmware,
+binaries, assets, or trademarks.
 
 See [DISCLAIMER.md](DISCLAIMER.md).

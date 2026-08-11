@@ -20,3 +20,10 @@ package. The scripts verify known SHA-256 values before patching.
 Do not update drone, Skycontroller 2, or FLIR ONE Pro firmware as part of this
 process. The tested fix was done without firmware updates, factory resets,
 flashing, or bootloader changes.
+
+## Licensing scope
+
+The repository license covers only the original scripts, documentation, and
+patch instructions here. It grants no rights to third-party software, firmware,
+assets, binaries, trademarks, or any other copyrighted material belonging to
+Parrot, FLIR, or others.
